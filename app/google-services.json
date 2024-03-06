@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "914224010961",
+    "project_id": "testing20-13033",
+    "storage_bucket": "testing20-13033.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914224010961:android:fce3919ef0845601cfd7f0",
+        "android_client_info": {
+          "package_name": "com.example.plant_dis_det_v1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR6U7LdUtfeZsmdCUq4Tq1lK-G_KQp1ag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
