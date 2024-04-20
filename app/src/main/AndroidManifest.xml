@@ -16,6 +16,21 @@
         android:theme="@style/Theme.PLANT_DIS_DET_v1"
         tools:targetApi="31">
         <activity
+            android:name=".Healthy_plant"
+            android:exported="false" />
+        <activity
+            android:name=".unhealthy_aerca"
+            android:exported="false" />
+        <activity
+            android:name=".arca_healthy"
+            android:exported="false" />
+        <activity
+            android:name=".unhealthy_pepper"
+            android:exported="false" />
+        <activity
+            android:name=".Invalid_input"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity

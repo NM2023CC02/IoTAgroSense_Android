@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_500"
+    android:background="@drawable/pagebkg"
     tools:context=".MainActivity_sv"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
+
+
+
+
         android:id="@+id/rel1"
         android:layout_width="178dp"
         android:layout_height="125dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/purple"
+        android:layout_marginBottom="69dp"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"
         android:elevation="2dp"
         android:orientation="vertical">
 
@@ -38,8 +46,8 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginStart="8dp"
-                android:src="@drawable/ic_baseline_camera_24"
-                android:background="@drawable/camera" />
+                android:background="@drawable/camera_new_bg"
+                android:src="@drawable/ic_baseline_camera_24" />
         </LinearLayout>
     </LinearLayout>
 
@@ -64,7 +72,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/cardView"
-        android:layout_marginTop="2dp">
+        android:layout_marginTop="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,21 +89,13 @@
                 android:justificationMode="inter_word"
                 android:lineSpacingMultiplier="0.9"
                 android:text="First Import Your Image Using Camera"
-                android:textColor="@color/white"
-                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 android:visibility="visible"
                 tools:targetApi="o" />
 
-            <ImageView
-                android:id="@+id/demoArrow"
-                android:layout_width="178dp"
-                android:layout_height="175dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:rotation="0"
-                android:src="@drawable/ic_baseline_arrow_downward_24"
-                android:visibility="visible"
-                app:tint="@color/white" />           <!--android:tint="@color/white" />-->
+            <!--android:tint="@color/white" />-->
 
             <TextView
                 android:id="@+id/classified"
@@ -116,6 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
+                android:background="@color/lavender"
                 android:clickable="true"
                 android:focusable="true"
                 android:includeFontPadding="false"
@@ -123,7 +124,7 @@
                 android:text=""
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textColor="#D29C9404"
+                android:textColor="#FFEB3B"
                 android:textSize="24sp" />
 
             <TextView
@@ -135,7 +136,8 @@
                 android:text="Click on the Result to Know More ..."
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
@@ -173,19 +175,3 @@
 
 
 
-
-
-
-
-    <!--<fragment
-        android:id="@+id/nav_host_fragment_content_main"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/nav_graph" />
--->

@@ -32,6 +32,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         demoTxt.setVisibility(View.VISIBLE);
         clickHere.setVisibility(View.GONE);
-        arrowImage.setVisibility(View.VISIBLE);
+//        arrowImage.setVisibility(View.VISIBLE);
         classified.setVisibility(View.GONE);
         result.setVisibility(View.GONE);
 
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
             demoTxt.setVisibility(View.GONE);
             clickHere.setVisibility(View.VISIBLE);
-            arrowImage.setVisibility(View.GONE);
+//            arrowImage.setVisibility(View.GONE);
             classified.setVisibility(View.VISIBLE);
             result.setVisibility(View.VISIBLE);
 
@@ -133,13 +134,32 @@ public class MainActivity extends AppCompatActivity {
                     maxPos=i;
                 }
             }
-            String[] classes={"healthy","unhealthy"};
+//            String[] classes={"Healthy Pepper","Polludisease Anthacronose","Healthy Arecanut","Yellow leaf","Invalid Input"};
+              String[] classes={"ಆರೋಗ್ಯಕರ ಕರಿಮೆಣಸು ಸಸ್ಯ","ಪೊಲ್ಯು ಆಂಥಾಕ್ರೋನೋಸ್","ಆರೋಗ್ಯಕರ ಅಡಿಕೆ ಮರ","ಹಳದಿ ಎಲೆ ರೋಗ","ಅಮಾನ್ಯ ಚಿತ್ರ"};
             result.setText(classes[maxPos]);
             result.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://www.google.com/search?q="+result.getText()+" PLANT")));
+                public void onClick(View view)
+                {
+                    Intent intent = null;
+                    if ("ಆರೋಗ್ಯಕರ ಕರಿಮೆಣಸು ಸಸ್".equals(result.getText().toString())) {
+                        intent = new Intent(MainActivity.this, Healthy_plant.class);
+                    } else if ("ಪೊಲ್ಯು ಆಂಥಾಕ್ರೋನೋಸ್".equals(result.getText().toString())) {
+                        intent = new Intent(MainActivity.this, unhealthy_pepper.class);
+                    } else if ("ಆರೋಗ್ಯಕರ ಅಡಿಕೆ ಮರ".equals(result.getText().toString())) {
+                        intent = new Intent(MainActivity.this, Healthy_plant.class);
+                    } else if ("ಹಳದಿ ಎಲೆ ರೋಗ".equals(result.getText().toString())) {
+                        intent = new Intent(MainActivity.this, unhealthy_aerca.class);
+                    } else if ("ಅಮಾನ್ಯ ಚಿತ್ರ".equals(result.getText().toString())) {
+                        intent = new Intent(MainActivity.this, Invalid_input.class);
+                    } else{
+                        Toast.makeText(MainActivity.this, "NO OPTIONS", Toast.LENGTH_LONG).show();
+                    }
+                    if (intent != null) {
+                        startActivity(intent);
+                    }
+//                    startActivity(new Intent(Intent.ACTION_VIEW,
+//                            Uri.parse("https://www.google.com/search?q="+result.getText()+" PLANT")));
                 }
             });
             model.close();

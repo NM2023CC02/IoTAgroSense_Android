@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lavender"
+    tools:context=".unhealthy_pepper">
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ಜೂನ್/ಜುಲೈ ಮತ್ತು ಸೆಪ್ಟೆಂಬರ್/ಅಕ್ಟೋಬರ್ ಅವಧಿಯಲ್ಲಿ ಕ್ವಿನಾಲ್ಫಾಸ್ (0.05% ಪ್ರತಿ) ಅಥವಾ ಜುಲೈನಲ್ಲಿ ಕ್ವಿನಾಲ್ಫಾಸ್ (ತಲಾ 0.05%) ಮತ್ತು ಆಗಸ್ಟ್, ಸೆಪ್ಟೆಂಬರ್ನಲ್ಲಿ ಬೇವು (0.6%) (ಬೇವು ಆಧಾರಿತ ಕೀಟನಾಶಕ) ಸಿಂಪಡಿಸುವುದು. ಎಲೆಗಳ ಕೆಳಭಾಗದಲ್ಲಿ ಸಂಪೂರ್ಣವಾಗಿ ಸಿಂಪಡಿಸಬೇಕು."
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ಪರಿಹಾರಗಳು"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pepper_ref"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="88dp"
+        android:text="https://kirehalli.com/pollu-disease-in-black-pepper/"
+        android:textColor="#0000EE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="58dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="40dp"
+        android:text="ಉಲ್ಲೇಖ"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/pepper_ref"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

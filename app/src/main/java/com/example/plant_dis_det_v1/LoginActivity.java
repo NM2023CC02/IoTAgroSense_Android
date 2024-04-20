@@ -13,6 +13,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +33,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.io.Console;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -40,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView signupRedirectText;
     private Button loginButton;
     private FirebaseAuth auth;
+    private FirebaseUser user;
     TextView forgotPassword;
     Button googleBtn;
     GoogleSignInOptions gOptions;
@@ -56,9 +61,11 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.login_button);
         signupRedirectText = findViewById(R.id.signUpRedirectText);
         forgotPassword = findViewById(R.id.forgot_password);
-        googleBtn = findViewById(R.id.googleBtn);
+//        googleBtn = findViewById(R.id.googleBtn);
 
         auth = FirebaseAuth.getInstance();
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,21 +76,45 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     if (!pass.isEmpty()) {
-                        auth.signInWithEmailAndPassword(email, pass)
-                                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                                    @Override
-                                    public void onSuccess(AuthResult authResult) {
+//                        if (FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()) {
+//                            Log.d("aniruddha","acharya");
+//                            auth.signInWithEmailAndPassword(email, pass)
+//                                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+//                                        @Override
+//                                        public void onSuccess(AuthResult authResult) {
+//                                            Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+//                                            startActivity(new Intent(LoginActivity.this, Select_Button.class));
+//                                            finish();
+//                                        }
+//                                    }).addOnFailureListener(new OnFailureListener() {
+//                                        @Override
+//                                        public void onFailure(@NonNull Exception e) {
+//                                            Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    });
+                        auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    if (FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()) {
                                         Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(LoginActivity.this, Select_Button.class));
                                         finish();
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, "Please Verify Before Signin Or Sign Up", Toast.LENGTH_SHORT);
                                     }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                    } else {
+
+                                }
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(LoginActivity.this, "Login Failed...Please Signup and verify your Email or Check The Password", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+                    else {
                         loginPassword.setError("Empty fields are not allowed");
                     }
                 } else if (email.isEmpty()) {
@@ -173,12 +204,12 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
-        googleBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent signInIntent = gClient.getSignInIntent();
-                activityResultLauncher.launch(signInIntent);
-            }
-        });
+//        googleBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent signInIntent = gClient.getSignInIntent();
+//                activityResultLauncher.launch(signInIntent);
+//            }
+//        });
     }
 }
